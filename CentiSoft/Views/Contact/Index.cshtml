@@ -1,4 +1,4 @@
-﻿@model CentiSoft.Models.CustomerVM
+﻿@model CentiSoft.Models.ContactVM
 
 @{
     ViewBag.Title = "Index";
@@ -18,14 +18,14 @@
     </tr>
 </thead>
 <tbody>
-    @foreach (var customervm in Model.customers)
+    @foreach (var contactvm in Model.contacts)
     {
         <tr>
-            <td>@customervm.Id</td>
-            <td>@customervm.Name</td>
-            <td>@customervm.Position</td>
-            <td>@customervm.Company</td>
-            <td>@customervm.PhoneNumber</td>            
+            <td>@contactvm.Id</td>
+            <td>@contactvm.Name</td>
+            <td>@contactvm.Position</td>
+            <td>@contactvm.Company</td>
+            <td>@contactvm.PhoneNumber</td>            
         </tr>
     }
 </tbody>

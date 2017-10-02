@@ -8,42 +8,42 @@ using System.Web.Mvc;
 
 namespace CentiSoft.Controllers
 {
-    public class CustomerController : Controller
+    public class ContactController : Controller
     {
-        // GET: Customer
+        // GET: Contact
         public ActionResult Index()
         {
-            CustomerRepository customerRepository = new CustomerRepository();
-            List<Customer> customers = customerRepository.LoadAllCustomers();
-            List<CustomerVM> customerVMs = new List<CustomerVM>();
-            foreach(Customer c in customers)
+            ContactRepository contactRepository = new ContactRepository();
+            List<Contact> contacts = contactRepository.LoadAllContacts();
+            List<ContactVM> contactVMs = new List<ContactVM>();
+            foreach(Contact c in contacts)
             {
-                CustomerVM customerVM = new CustomerVM();
-                customerVM.Id = c.Id;
-                customerVM.Name = c.Name;
-                customerVM.Position = c.Position;
-                customerVM.PhoneNumber = c.PhoneNumber;
-                customerVM.Company = c.Company;
-                customerVMs.Add(customerVM);
+                ContactVM contactVM = new ContactVM();
+                contactVM.Id = c.Id;
+                contactVM.Name = c.Name;
+                contactVM.Position = c.Position;
+                contactVM.PhoneNumber = c.PhoneNumber;
+                contactVM.Company = c.Company;
+                contactVMs.Add(contactVM);
             }
-            CustomerVM model = new CustomerVM();
-            model.customers = customerVMs;
+            ContactVM model = new ContactVM();
+            model.contacts = contactVMs;
             return View(model);
         }
 
-        // GET: Customer/Details/5
+        // GET: Contact/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Customer/Create
+        // GET: Contact/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Customer/Create
+        // POST: Contact/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -59,13 +59,13 @@ namespace CentiSoft.Controllers
             }
         }
 
-        // GET: Customer/Edit/5
+        // GET: Contact/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Customer/Edit/5
+        // POST: Contact/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -81,13 +81,13 @@ namespace CentiSoft.Controllers
             }
         }
 
-        // GET: Customer/Delete/5
+        // GET: Contact/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Customer/Delete/5
+        // POST: Contact/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
