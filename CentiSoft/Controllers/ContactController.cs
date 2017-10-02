@@ -31,10 +31,37 @@ namespace CentiSoft.Controllers
             return View(model);
         }
 
-        // GET: Contact/Details/5
-        public ActionResult Details(int id)
+        // GET EDIT PAGE
+        public ActionResult Edit(int id)
         {
-            return View();
+            ContactRepository contactRepository = new ContactRepository();
+            Contact contact = contactRepository.LoadContact(id);
+
+            ContactVM model = new ContactVM();
+            model.Id = contact.Id;
+            model.Name = contact.Name;
+            model.Company = contact.Company;
+            model.Position = contact.Position;
+            model.PhoneNumber = contact.PhoneNumber;
+
+            return View(model);
+        }
+
+        //HTTP POST EDIT PAGE
+        [HttpPost]
+        public ActionResult Edit(ContactVM model)
+        {
+            Contact contact = new Contact();
+            contact.Id = model.Id;
+            contact.Company = model.Company;
+            contact.Position = model.Position;
+            contact.PhoneNumber = model.PhoneNumber;
+            contact.Name = model.Name;
+
+            ContactRepository contactRepository = new ContactRepository();
+            contactRepository.EditContact(contact);
+
+            return RedirectToAction("Index");
         }
 
         public ActionResult Create()
@@ -59,27 +86,8 @@ namespace CentiSoft.Controllers
 
         
 
-        // GET: Contact/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST: Contact/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // GET: Contact/Delete/5
         public ActionResult Delete(int id)
