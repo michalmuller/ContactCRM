@@ -1,0 +1,28 @@
+﻿@model CentiSoft.Models.ContactVM
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<form action="/Contact/Create" method="post" class="form-horizontal">
+    <div class="form-group">
+        <label>Contact name</label>
+        <input type="text" name="Name" required />
+    </div>
+    <div class="form-group">
+        <label>Position</label>
+        <input type="text" name="Position" required />
+    </div>
+    <div class="form-group">
+        <label>Company</label>
+        <input type="text" name="Company" required />
+    </div>
+    <div class="form-group">
+        <label>Phone number</label>
+        <input type="text" name="PhoneNumber" required />
+    </div>
+    <input type="submit" value="Submit" class="btn btn-danger" />
+</form>

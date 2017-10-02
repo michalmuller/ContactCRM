@@ -37,27 +37,27 @@ namespace CentiSoft.Controllers
             return View();
         }
 
-        // GET: Contact/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Contact/Create
+        ///Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(ContactVM model)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            ContactRepository contactRepository = new ContactRepository();
+            Contact contact = new Contact();
+            contact.Name = model.Name;
+            contact.Company = model.Company;
+            contact.Position = model.Position;
+            contact.PhoneNumber = model.PhoneNumber;
+            contactRepository.CreateContact(contact);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index");
         }
+
+        
 
         // GET: Contact/Edit/5
         public ActionResult Edit(int id)

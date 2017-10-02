@@ -1,6 +1,7 @@
 ﻿using CentiSoft.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
@@ -42,6 +43,34 @@ namespace CentiSoft.DAL
             }
             return contacts;
         }
-        
+
+        public void CreateContact(Contact contact)
+        {
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = "Server=localhost;Database=PWECentiSoft;Integrated Security=SSPI";
+
+            try
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "INSERT INTO Contact(Name, Company, Position, PhoneNumber) Values (@name, @company, @position, @phoneNumber)";
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = contact.Name;
+                command.Parameters.Add("@company", SqlDbType.NVarChar).Value = contact.Company;
+                command.Parameters.Add("@position", SqlDbType.NVarChar).Value = contact.Position;
+                command.Parameters.Add("@phoneNumber", SqlDbType.NVarChar).Value = contact.PhoneNumber;
+
+                command.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
     }
 }
