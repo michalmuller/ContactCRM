@@ -6,6 +6,7 @@ using System.Web;
 namespace CentiSoft.Models
 {
     public class Contact
+        // hello
     {
         public int Id { get; set; }
         public string Name { get; set; }
