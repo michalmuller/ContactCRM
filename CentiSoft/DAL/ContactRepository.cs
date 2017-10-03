@@ -133,5 +133,27 @@ namespace CentiSoft.DAL
             return contact;
         }
 
+        public void DeleteContact(int id)
+        {
+            SqlConnection connection = new SqlConnection();
+            connection.ConnectionString = "Server=localhost;Database=PWECentiSoft;Integrated Security=SSPI";
+
+            try
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandText = "DELETE FROM Contact WHERE Id="+ id;
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
     }
 }

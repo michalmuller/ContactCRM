@@ -1,0 +1,32 @@
+﻿@model CentiSoft.Models.ContactVM
+
+@{
+    ViewBag.Title = "Show";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Show</h2>
+
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Company</th>
+            <th>Phone number</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>@Model.Id</td>
+                <td>@Model.Name</td>
+                <td>@Model.Position</td>
+                <td>@Model.Company</td>
+                <td>@Model.PhoneNumber</td>
+               
+            </tr>
+        
+    </tbody>
+</table>

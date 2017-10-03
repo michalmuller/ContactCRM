@@ -12,8 +12,9 @@
     <tr>
         <th>Id</th>
         <th>Name</th>
-        <th>Description</th>
-        <th>RoomNumber</th>
+        <th>Position</th>
+        <th>Company</th>
+        <th>Phone number</th>
         <th>Actions</th>
     </tr>
 </thead>
@@ -25,7 +26,12 @@
             <td>@contactvm.Name</td>
             <td>@contactvm.Position</td>
             <td>@contactvm.Company</td>
-            <td>@contactvm.PhoneNumber</td>            
+            <td>@contactvm.PhoneNumber</td>   
+            <td>
+                <a href="/Contact/Show/@contactvm.Id">Details</a>
+                <a href="/Contact/Edit/@contactvm.Id" class="btn ">Edit</a>
+                <a href="/Contact/Delete/@contactvm.Id">Delete</a>
+            </td>
         </tr>
     }
 </tbody>

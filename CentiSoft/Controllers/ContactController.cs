@@ -47,6 +47,21 @@ namespace CentiSoft.Controllers
             return View(model);
         }
 
+        public ActionResult Show(int id)
+        {
+            ContactRepository contactRepository = new ContactRepository();
+            Contact contact = contactRepository.LoadContact(id);
+
+            ContactVM model = new ContactVM();
+            model.Id = contact.Id;
+            model.Name = contact.Name;
+            model.Company = contact.Company;
+            model.Position = contact.Position;
+            model.PhoneNumber = contact.PhoneNumber;
+
+            return View(model);
+        }
+
         //HTTP POST EDIT PAGE
         [HttpPost]
         public ActionResult Edit(ContactVM model)
@@ -85,30 +100,16 @@ namespace CentiSoft.Controllers
         }
 
         
-
-
-
-
-        // GET: Contact/Delete/5
+        
         public ActionResult Delete(int id)
         {
-            return View();
+            ContactRepository contactRepository = new ContactRepository();
+            contactRepository.DeleteContact(id);
+            return RedirectToAction("Index");
+
         }
 
         // POST: Contact/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
     }
 }
